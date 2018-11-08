@@ -6,4 +6,7 @@ IMAGE      ?= ${REGISTRY}/${ORG}/template-service-broker-operator:${TAG}
 build: ## Build the tsb operator image
 	docker build -t ${IMAGE} .
 
-.PHONY: build
+openshift-ci-lint:
+	ansible-lint /opt/ansible/deploy.yml
+
+.PHONY: build openshift-ci-lint
